@@ -1,0 +1,4 @@
+rootProject.name = 'HibernateCourse'
+include 'M03'
+include 'M04'
+
