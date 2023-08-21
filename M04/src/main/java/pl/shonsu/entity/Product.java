@@ -25,11 +25,12 @@ public class Product {
     @OneToMany(mappedBy = "product", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
     private List<Review> reviews = new ArrayList<>();
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(joinColumns = {@JoinColumn(name = "product_id")},
+    @JoinTable(joinColumns = {@JoinColumn(name = "product_Id")},
             inverseJoinColumns = {@JoinColumn(name = "attribute_id")})
     private Set<Attribute> attributes = new HashSet<>();
 
