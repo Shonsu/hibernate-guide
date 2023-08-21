@@ -56,4 +56,9 @@ public class Attribute {
                 ", value='" + value + '\'' +
                 '}';
     }
+
+    public void removeProduct(Product product) {
+        products.remove(product);
+        product.getAttributes().remove(this);
+    }
 }
