@@ -1,6 +1,9 @@
 package pl.shonsu;
 
-import jakarta.persistence.*;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.TypedQuery;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import pl.shonsu.entity.Product;
@@ -20,14 +23,11 @@ public class App17Jpql {
                         " WHERE p.id=:id",
                 Product.class);
         query.setParameter("id", 31);
-        try {
-            Product product = query.getSingleResult();
-//            Product product = query.getSingleResult();
-            log.info(product);
-        } catch (NoResultException e) {
-            //log.error("No result for query", e);
-            throw new RuntimeException("No result for query", e);
-        }
+        Product product = query.getResultStream()
+                .findFirst()
+                .orElseThrow(() -> new RuntimeException("No result for query"));
+        log.info(product);
+
         em.getTransaction().commit();
         em.close();
     }
