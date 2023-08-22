@@ -10,8 +10,8 @@ import pl.shonsu.entity.ProductInCategoryCounterDto;
 
 import java.util.List;
 
-public class App18JpqlResponseMapping {
-    private static final Logger log = LogManager.getLogger(App18JpqlResponseMapping.class);
+public class App19JpqlDtoPorjection {
+    private static final Logger log = LogManager.getLogger(App19JpqlDtoPorjection.class);
     private static final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unit");
 
     public static void main(String[] args) {
@@ -20,9 +20,10 @@ public class App18JpqlResponseMapping {
 
 
         Query query = em.createQuery(
-                "SELECT new pl.shonsu.entity.ProductInCategoryCounterDto(p.category.id, COUNT(p)) " +
-                        "FROM Product p GROUP BY p.category");
-        List<ProductInCategoryCounterDto> list = query.getResultList();
+                "SELECT p.category.id, COUNT(p) FROM Product p GROUP BY p.category");
+        List<ProductInCategoryCounterDto> list = ((List<Object[]>) query.getResultList()).stream()
+                .map(objects -> new ProductInCategoryCounterDto((Long) objects[0], (Long) objects[1]))
+                .toList();
         list.forEach(log::info);
         em.getTransaction().commit();
         em.close();
