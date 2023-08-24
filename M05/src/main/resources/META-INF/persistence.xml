@@ -8,6 +8,9 @@
         <class>pl.shonsu.entity.Review</class>
         <class>pl.shonsu.entity.Category</class>
         <class>pl.shonsu.entity.Attribute</class>
+        <class>pl.shonsu.entity.Customer</class>
+        <class>pl.shonsu.entity.Order</class>
+        <class>pl.shonsu.entity.OrderRow</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url"
