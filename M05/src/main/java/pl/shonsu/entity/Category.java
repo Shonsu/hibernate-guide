@@ -2,7 +2,7 @@ package pl.shonsu.entity;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Category {
@@ -13,13 +13,13 @@ public class Category {
     private String description;
 
     @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    private Set<Product> products;
 
-    public List<Product> getProducts() {
+    public Set<Product> getProducts() {
         return products;
     }
 
-    public void setProducts(List<Product> products) {
+    public void setProducts(Set<Product> products) {
         this.products = products;
     }
 
@@ -47,5 +47,12 @@ public class Category {
         this.description = description;
     }
 
-
+    @Override
+    public String toString() {
+        return "Category{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
