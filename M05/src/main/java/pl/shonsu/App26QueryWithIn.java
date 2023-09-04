@@ -28,12 +28,10 @@ public class App26QueryWithIn {
 
         for (Order order : orders) {
             log.info(order);
-//            log.info(order.getOrderRows());
         }
 
 
         em.getTransaction().commit();
         em.close();
-
     }
 }

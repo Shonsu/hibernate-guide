@@ -6,6 +6,15 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 
+@NamedEntityGraph(name = "order-rows",
+        attributeNodes = {
+                @NamedAttributeNode(value = "orderRows", subgraph = "orderRows1"),
+                @NamedAttributeNode("customer")
+        },
+        subgraphs = @NamedSubgraph(
+                name = "orderRows1",
+                attributeNodes = @NamedAttributeNode("product"))
+)
 @Entity
 @Table(name = "`order`")
 public class Order {
@@ -18,7 +27,8 @@ public class Order {
     @OneToMany
     @JoinColumn(name = "order_id")
     private Set<OrderRow> orderRows;
-
+    @OneToOne
+    private Customer customer;
     public Long getId() {
         return id;
     }
@@ -49,6 +59,14 @@ public class Order {
 
     public void setOrderRows(Set<OrderRow> orderRows) {
         this.orderRows = orderRows;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override
