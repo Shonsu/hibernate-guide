@@ -1,6 +1,7 @@
 package pl.shonsu.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.math.BigDecimal;
 

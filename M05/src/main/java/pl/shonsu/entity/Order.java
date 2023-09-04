@@ -1,20 +1,30 @@
 package pl.shonsu.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.BatchSize;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-@NamedEntityGraph(name = "order-rows",
-        attributeNodes = {
-                @NamedAttributeNode(value = "orderRows", subgraph = "orderRows1"),
-                @NamedAttributeNode("customer")
-        },
-        subgraphs = @NamedSubgraph(
-                name = "orderRows1",
-                attributeNodes = @NamedAttributeNode("product"))
-)
+@NamedEntityGraphs({
+        @NamedEntityGraph(
+                name = "order-rows",
+                attributeNodes = {
+                        @NamedAttributeNode(value = "orderRows", subgraph = "orderRows1"),
+                        @NamedAttributeNode("customer")
+                },
+                subgraphs = @NamedSubgraph(
+                        name = "orderRows1",
+                        attributeNodes = @NamedAttributeNode("product"))
+        ),
+        @NamedEntityGraph(
+                name = "order-and-rows",
+               attributeNodes = @NamedAttributeNode("orderRows")
+        )
+
+})
+
 @Entity
 @Table(name = "`order`")
 public class Order {
@@ -24,11 +34,13 @@ public class Order {
     private LocalDateTime created;
     private BigDecimal total;
 
-    @OneToMany
+    @OneToMany//(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id")
+    @BatchSize(size = 10)
     private Set<OrderRow> orderRows;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Customer customer;
+
     public Long getId() {
         return id;
     }

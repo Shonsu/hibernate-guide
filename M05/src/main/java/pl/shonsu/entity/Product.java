@@ -7,6 +7,13 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+@NamedEntityGraph(
+        name = "product-review-attribute",
+        attributeNodes = {
+                @NamedAttributeNode("reviews"),
+                @NamedAttributeNode("attributes")
+        }
+)
 @Entity
 public class Product {
     @Id
