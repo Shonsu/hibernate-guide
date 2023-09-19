@@ -17,7 +17,7 @@
         <Logger name="org.hibernate.engine.jdbc.batch.internal.BatchingBatch" level="debug" additivity="false">
             <AppenderRef ref="Console-Appender"/>
         </Logger>
-        <Root level="info">
+        <Root level="debug">
             <AppenderRef ref="Console-Appender"/>
         </Root>
     </Loggers>

@@ -14,8 +14,10 @@
         <class>pl.shonsu.entity.batch.BatchReview</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="jakarta.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost/hibernatecourse?useUnicode=true&amp;serverTimezone=UTC"/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost/hibernatecourse?useUnicode=true&amp;serverTimezone=UTC&amp;rewriteBatchedStatements=true&amp;profileSQL=true"/>
+<!--            <property name="jakarta.persistence.jdbc.driver" value="org.postgresql.Driver"/>-->
+<!--            <property name="jakarta.persistence.jdbc.url" value="jdbc:postgresql://localhost/hibernatecourse?reWriteBatchedInserts=true"/>-->
+<!--            &amp;rewriteBatchedStatements=true&amp;profileSQL=true-->
             <property name="jakarta.persistence.jdbc.user" value="user"/>
             <property name="jakarta.persistence.jdbc.password" value="user"/>
 
@@ -25,6 +27,7 @@
             <property name="hibernate.jdbc.batch_size" value="5"/>
             <property name="hibernate.order_updates" value="true"/>
             <property name="hibernate.order_inserts" value="true"/>
+
         </properties>
     </persistence-unit>
 

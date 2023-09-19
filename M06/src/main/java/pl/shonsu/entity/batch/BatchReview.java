@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "review")
 public class BatchReview {
     @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "review_generator")
+//    @SequenceGenerator(name = "review_generator", sequenceName = "review_id_seq", allocationSize = 1)
     private Long id;
     private String content;
     private int rating;
@@ -52,5 +54,15 @@ public class BatchReview {
 
     public void setProductId(Long productId) {
         this.productId = productId;
+    }
+
+    @Override
+    public String toString() {
+        return "BatchReview{" +
+                "id=" + id +
+                ", content='" + content + '\'' +
+                ", rating=" + rating +
+                ", productId=" + productId +
+                '}';
     }
 }
