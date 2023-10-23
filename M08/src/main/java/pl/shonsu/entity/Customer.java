@@ -21,6 +21,9 @@ public class Customer {
     @ElementCollection
     private List<Address> address;
 
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL, optional = false)
+    private CustomerDetails customerDetails;
+
     public Set<Order> getOrders() {
         return orders;
     }
@@ -69,6 +72,14 @@ public class Customer {
         this.address = addressList;
     }
 
+    public CustomerDetails getCustomerDetails() {
+        return customerDetails;
+    }
+
+    public void setCustomerDetails(CustomerDetails customerDetails) {
+        this.customerDetails = customerDetails;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -78,4 +89,6 @@ public class Customer {
                 ", created=" + created +
                 '}';
     }
+
+
 }
