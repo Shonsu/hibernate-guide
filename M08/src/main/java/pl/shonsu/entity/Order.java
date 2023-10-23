@@ -34,7 +34,7 @@ public class Order {
     private LocalDateTime created;
     private BigDecimal total;
 
-    @OneToMany//(fetch = FetchType.EAGER)
+    @OneToMany(orphanRemoval = true)//(fetch = FetchType.EAGER)
     @JoinColumn(name = "order_id")
     @BatchSize(size = 10)
     private Set<OrderRow> orderRows;
