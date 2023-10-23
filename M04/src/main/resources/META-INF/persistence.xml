@@ -4,10 +4,10 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
     <persistence-unit name="unit" transaction-type="RESOURCE_LOCAL">
-        <class>pl.shonsu.entity.Product</class>
-        <class>pl.shonsu.entity.Review</class>
-        <class>pl.shonsu.entity.Category</class>
-        <class>pl.shonsu.entity.Attribute</class>
+        <class>pl.entity.pl.shonsu.Product</class>
+        <class>pl.entity.pl.shonsu.Review</class>
+        <class>pl.entity.pl.shonsu.Category</class>
+        <class>pl.entity.pl.shonsu.Attribute</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url"

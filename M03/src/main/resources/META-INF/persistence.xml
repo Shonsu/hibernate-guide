@@ -4,7 +4,7 @@
              http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
     <persistence-unit name="unit" transaction-type="RESOURCE_LOCAL">
-        <class>pl.shonsu.entity.Product</class>
+        <class>pl.entity.pl.shonsu.Product</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url"
