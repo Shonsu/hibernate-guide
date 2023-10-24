@@ -15,6 +15,7 @@
         <class>pl.shonsu.entity.BaseProduct</class>
         <class>pl.shonsu.entity.VirtualProduct</class>
         <class>pl.shonsu.entity.RealProduct</class>
+        <class>pl.shonsu.entity.Note</class>
         <properties>
             <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
             <property name="jakarta.persistence.jdbc.url"

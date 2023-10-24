@@ -164,3 +164,23 @@ ALTER TABLE `review`
     ADD COLUMN `customer_id` BIGINT NULL AFTER `rating`;
 ALTER TABLE `review`
     ADD CONSTRAINT `fk_review_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);
+
+DROP TABLE IF EXISTS `note`;
+CREATE TABLE `note`
+(
+    `id`      BIGINT       NOT NULL AUTO_INCREMENT,
+    `content` VARCHAR(500) NOT NULL,
+    `created` DATETIME     NOT NULL,
+    PRIMARY KEY (`id`)
+);
+
+DROP TABLE IF EXISTS `customer_note`;
+CREATE TABLE `customer_note`
+(
+    `customer_id` BIGINT NOT NULL,
+    `notes_id`     BIGINT NOT NULL,
+    primary key (`customer_id`, `notes_id`),
+    CONSTRAINT `fk_customer_note_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`),
+    CONSTRAINT `fk_customer_note_note_id` FOREIGN KEY (`notes_id`) REFERENCES `note` (`id`)
+);
+

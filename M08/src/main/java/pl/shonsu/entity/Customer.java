@@ -28,8 +28,10 @@ public class Customer {
     @JoinColumn(name = "customer_id")
     //@OrderBy("id DESC")
     @SortComparator(SortById.class)
-    private SortedSet<Review> reviews = new TreeSet<Review>() {
-    };
+    private SortedSet<Review> reviews = new TreeSet<Review>();
+
+    @OneToMany(cascade = CascadeType.PERSIST)
+    private List<Note> notes = new ArrayList<>();
     public Set<Order> getOrders() {
         return orders;
     }
@@ -92,6 +94,14 @@ public class Customer {
 
     public void setReviews(SortedSet<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public List<Note> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Note> notes) {
+        this.notes = notes;
     }
 
     @Override
