@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -90,5 +91,18 @@ public class Customer {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Customer customer = (Customer) o;
+        return Objects.equals(firstname, customer.firstname) &&
+                Objects.equals(lastname, customer.lastname) &&
+                Objects.equals(created, customer.created);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstname, lastname, created);
+    }
 }

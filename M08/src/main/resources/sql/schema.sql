@@ -155,3 +155,6 @@ CREATE TABLE `base_product`
     `file_name`    VARCHAR(100),
     PRIMARY KEY (`id`)
 );
+
+
+ALTER TABLE `order` ADD COLUMN uuid BINARY(16) NULL AFTER total;

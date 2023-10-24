@@ -5,7 +5,9 @@ import org.hibernate.annotations.BatchSize;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.Set;
+import java.util.UUID;
 
 @NamedEntityGraphs({
         @NamedEntityGraph(
@@ -20,7 +22,7 @@ import java.util.Set;
         ),
         @NamedEntityGraph(
                 name = "order-and-rows",
-               attributeNodes = @NamedAttributeNode("orderRows")
+                attributeNodes = @NamedAttributeNode("orderRows")
         )
 
 })
@@ -40,6 +42,9 @@ public class Order {
     private Set<OrderRow> orderRows;
     @ManyToOne(fetch = FetchType.LAZY)
     private Customer customer;
+
+    @Column(name = "uuid", updatable = false, nullable = false, columnDefinition = "BINARY(16)")
+    private UUID uuid = UUID.randomUUID();
 
     public Long getId() {
         return id;
@@ -88,5 +93,21 @@ public class Order {
                 ", created=" + created +
                 ", total=" + total +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Order order = (Order) o;
+//        return Objects.equals(created, order.created) &&
+//                Objects.equals(customer, order.customer);
+        return Objects.equals(uuid, order.uuid);
+    }
+
+    @Override
+    public int hashCode() {
+        //return Objects.hash(created, customer);
+        return Objects.hash(uuid);
     }
 }
