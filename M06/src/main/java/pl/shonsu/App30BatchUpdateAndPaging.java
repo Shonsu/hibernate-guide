@@ -34,7 +34,7 @@ public class App30BatchUpdateAndPaging {
                     .getResultList();
             log.info(reviews);
             for (BatchReview review : reviews) {
-                review.setContent("Nowaaa Treść !!!");
+                review.setContent("Nowaaa Treść 22 !!!");
                 review.setRating(2);
             }
             em.flush();

@@ -1,11 +1,10 @@
 package pl.shonsu.entity;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.SortComparator;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 public class Customer {
@@ -25,6 +24,12 @@ public class Customer {
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL, optional = false)
     private CustomerDetails customerDetails;
 
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "customer_id")
+    //@OrderBy("id DESC")
+    @SortComparator(SortById.class)
+    private SortedSet<Review> reviews = new TreeSet<Review>() {
+    };
     public Set<Order> getOrders() {
         return orders;
     }
@@ -79,6 +84,14 @@ public class Customer {
 
     public void setCustomerDetails(CustomerDetails customerDetails) {
         this.customerDetails = customerDetails;
+    }
+
+    public Set<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(SortedSet<Review> reviews) {
+        this.reviews = reviews;
     }
 
     @Override

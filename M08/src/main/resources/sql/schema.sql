@@ -157,4 +157,10 @@ CREATE TABLE `base_product`
 );
 
 
-ALTER TABLE `order` ADD COLUMN uuid BINARY(16) NULL AFTER total;
+ALTER TABLE `order`
+    ADD COLUMN uuid BINARY(16) NULL AFTER total;
+
+ALTER TABLE `review`
+    ADD COLUMN `customer_id` BIGINT NULL AFTER `rating`;
+ALTER TABLE `review`
+    ADD CONSTRAINT `fk_review_customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customer` (`id`);

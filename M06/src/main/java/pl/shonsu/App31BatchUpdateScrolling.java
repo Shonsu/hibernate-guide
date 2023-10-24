@@ -22,7 +22,7 @@ public class App31BatchUpdateScrolling {
                 .setHint(AvailableHints.HINT_FETCH_SIZE, Integer.MIN_VALUE)
                 .getResultStream()
                 .forEach(batchReview -> {
-                    batchReview.setContent("contsdent");
+                    batchReview.setContent("contsent2");
                     batchReview.setRating(2);
                     log.info(batchReview);
                 });

@@ -27,7 +27,7 @@ public class Product {
     @Enumerated(EnumType.STRING)
     @Column(name = "type")
     private ProductType productType;
-    @OneToMany(mappedBy = "product", cascade = {CascadeType.REMOVE, CascadeType.PERSIST})
+    @OneToMany(mappedBy = "product", cascade = {CascadeType.REMOVE, CascadeType.PERSIST, CascadeType.MERGE})
     private Set<Review> reviews = new HashSet<Review>();
 
     @ManyToOne(fetch = FetchType.LAZY)

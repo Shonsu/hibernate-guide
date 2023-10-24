@@ -9,23 +9,23 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
 
-@NamedEntityGraphs({
-        @NamedEntityGraph(
-                name = "order-rows",
-                attributeNodes = {
-                        @NamedAttributeNode(value = "orderRows", subgraph = "orderRows1"),
-                        @NamedAttributeNode("customer")
-                },
-                subgraphs = @NamedSubgraph(
-                        name = "orderRows1",
-                        attributeNodes = @NamedAttributeNode("product"))
-        ),
-        @NamedEntityGraph(
-                name = "order-and-rows",
-                attributeNodes = @NamedAttributeNode("orderRows")
-        )
-
-})
+//@NamedEntityGraphs({
+//        @NamedEntityGraph(
+//                name = "order-rows",
+//                attributeNodes = {
+//                        @NamedAttributeNode(value = "orderRows", subgraph = "orderRows1"),
+//                        @NamedAttributeNode("customer")
+//                },
+//                subgraphs = @NamedSubgraph(
+//                        name = "orderRows1",
+//                        attributeNodes = @NamedAttributeNode("product"))
+//        ),
+//        @NamedEntityGraph(
+//                name = "order-and-rows",
+//                attributeNodes = @NamedAttributeNode("orderRows")
+//        )
+//
+//})
 
 @Entity
 @Table(name = "`order`")

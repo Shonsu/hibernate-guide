@@ -3,7 +3,7 @@ package pl.shonsu.entity;
 import jakarta.persistence.*;
 
 @Entity
-public class Review {
+public class Review implements Comparable<Review>{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -11,6 +11,9 @@ public class Review {
     private int rating;
     @ManyToOne(fetch = FetchType.LAZY)
     private Product product;
+
+    public Review() {
+    }
 
     public Long getId() {
         return id;
@@ -49,7 +52,13 @@ public class Review {
         return "Review{" +
                 "id=" + id +
                 ", content='" + content + '\'' +
-                //", rating=" + rating +
+                ", rating=" + rating +
+                //", product=" + product +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Review o) {
+        return id.compareTo(o.id);
     }
 }
