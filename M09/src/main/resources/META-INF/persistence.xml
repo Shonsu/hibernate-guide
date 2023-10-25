@@ -1,0 +1,34 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
+    <persistence-unit name="unit" transaction-type="RESOURCE_LOCAL">
+        <class>pl.shonsu.entity.Product</class>
+        <class>pl.shonsu.entity.Review</class>
+        <class>pl.shonsu.entity.Category</class>
+        <class>pl.shonsu.entity.Attribute</class>
+        <class>pl.shonsu.entity.Customer</class>
+        <class>pl.shonsu.entity.Order</class>
+        <class>pl.shonsu.entity.OrderRow</class>
+        <class>pl.shonsu.entity.CustomerDetails</class>
+        <class>pl.shonsu.entity.BaseProduct</class>
+        <class>pl.shonsu.entity.VirtualProduct</class>
+        <class>pl.shonsu.entity.RealProduct</class>
+        <class>pl.shonsu.entity.Note</class>
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/hibernatecourse?useUnicode=true&amp;serverTimezone=UTC"/>
+            <property name="jakarta.persistence.jdbc.user" value="user"/>
+            <property name="jakarta.persistence.jdbc.password" value="user"/>
+
+            <property name="org.hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+<!--            <property name="hibernate.format_sql" value="true"/>-->
+            <property name="org.hibernate.SQL" value="true"/>
+
+        </properties>
+    </persistence-unit>
+
+</persistence>
