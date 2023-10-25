@@ -19,6 +19,7 @@ public class Customer {
     private LocalDateTime created;
 
     @OneToMany(mappedBy = "customer")
+    @org.hibernate.annotations.Cache(region = "orders", usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Order> orders;
 
     @ElementCollection

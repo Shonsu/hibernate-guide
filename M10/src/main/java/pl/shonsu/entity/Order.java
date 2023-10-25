@@ -2,6 +2,7 @@ package pl.shonsu.entity;
 
 import jakarta.persistence.*;
 import org.hibernate.annotations.BatchSize;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -29,6 +30,8 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "`order`")
+@Cacheable
+@org.hibernate.annotations.Cache(region = "order", usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
