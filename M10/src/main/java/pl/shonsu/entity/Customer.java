@@ -1,17 +1,6 @@
 package pl.shonsu.entity;
 
-import jakarta.persistence.Cacheable;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import org.hibernate.annotations.Cache;
+import jakarta.persistence.*;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.SortComparator;
 
@@ -19,6 +8,8 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 @Entity
+@Cacheable
+@org.hibernate.annotations.Cache(region = "customer", usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,6 +35,7 @@ public class Customer {
 
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Note> notes = new ArrayList<>();
+
     public Set<Order> getOrders() {
         return orders;
     }
