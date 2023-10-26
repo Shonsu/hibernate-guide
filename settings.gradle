@@ -8,4 +8,5 @@ include 'M08'
 include 'M09'
 include 'M10'
 include 'M11'
+include 'spring-dao'
 
