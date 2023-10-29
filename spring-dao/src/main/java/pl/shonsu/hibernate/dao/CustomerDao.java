@@ -2,6 +2,7 @@ package pl.shonsu.hibernate.dao;
 
 import jakarta.persistence.EntityManager;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import pl.shonsu.hibernate.entity.Customer;
 
 import java.util.List;
@@ -25,6 +26,7 @@ public class CustomerDao {
                 .setParameter("id", id)
                 .getSingleResult();
     }
+
 
     public List<Customer> getCustomers() {
         List<Customer> resultList = em.createQuery("SELECT c FROM Customer c " +

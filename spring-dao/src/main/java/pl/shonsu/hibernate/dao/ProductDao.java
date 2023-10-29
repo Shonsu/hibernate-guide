@@ -27,10 +27,23 @@ public class ProductDao {
     }
 
     public List<Product> getProducts() {
-        EntityGraph entityGraph = em.getEntityGraph("product");
+        EntityGraph entityGraph = em.getEntityGraph("product-reviews");
+        EntityGraph entityGraph2 = em.getEntityGraph("product-attributes");
+        EntityGraph entityGraph3 = em.getEntityGraph("product-category");
+//        EntityGraph entityGraphAll = em.getEntityGraph("product-all");
+
         List<Product> products = em.createQuery("SELECT p FROM Product p", Product.class)
                 .setHint("jakarta.persistence.fetchgraph", entityGraph)
                 .getResultList();
+        products = em.createQuery("SELECT p FROM Product p", Product.class)
+                .setHint("jakarta.persistence.fetchgraph", entityGraph2)
+                .getResultList();
+        products = em.createQuery("SELECT p FROM Product p", Product.class)
+                .setHint("jakarta.persistence.fetchgraph", entityGraph3)
+                .getResultList();
+//        List<Product> allProducts = em.createQuery("SELECT p FROM Product p", Product.class)
+//                .setHint("jakarta.persistence.fetchgraph", entityGraphAll)
+//                .getResultList();
         return products;
     }
 }
