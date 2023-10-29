@@ -1,6 +1,5 @@
-package pl.nullpointerexception.hibernate.entity;
+package pl.shonsu.hibernate.entity;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;

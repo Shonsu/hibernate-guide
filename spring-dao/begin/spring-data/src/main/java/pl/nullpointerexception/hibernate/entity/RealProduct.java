@@ -1,4 +1,4 @@
-package pl.nullpointerexception.hibernate.entity;
+package pl.shonsu.hibernate.entity;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;

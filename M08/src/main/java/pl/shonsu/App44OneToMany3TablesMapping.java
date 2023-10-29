@@ -19,12 +19,14 @@ public class App44OneToMany3TablesMapping {
         em.getTransaction().begin();
 
         Customer customer = em.find(Customer.class, 1L);
-        customer.getNotes().add(new Note("Content 111", LocalDateTime.now()));
-        customer.getNotes().add(new Note("Content 222", LocalDateTime.now()));
-        customer.getNotes().add(new Note("Content 333", LocalDateTime.now()));
-        customer.getNotes().add(new Note("Content 444", LocalDateTime.now()));
+//        customer.getNotes().add(new Note("Content 111", LocalDateTime.now()));
+//        customer.getNotes().add(new Note("Content 222", LocalDateTime.now()));
+//        customer.getNotes().add(new Note("Content 333", LocalDateTime.now()));
+//        customer.getNotes().add(new Note("Content 444", LocalDateTime.now()));
 
         //em.persist(customer);
+        log.info(customer);
+        log.info(customer.getNotes());
         em.getTransaction().commit();
         em.close();
     }

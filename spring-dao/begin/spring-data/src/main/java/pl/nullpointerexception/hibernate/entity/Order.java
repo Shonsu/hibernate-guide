@@ -1,4 +1,4 @@
-package pl.nullpointerexception.hibernate.entity;
+package pl.shonsu.hibernate.entity;
 
 import org.hibernate.annotations.BatchSize;
 import org.hibernate.annotations.Cache;

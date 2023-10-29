@@ -1,4 +1,4 @@
-package pl.nullpointerexception.hibernate.entity.batch;
+package pl.shonsu.hibernate.entity.batch;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

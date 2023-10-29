@@ -4,7 +4,6 @@ import org.springframework.stereotype.Service;
 import pl.shonsu.hibernate.dao.CustomerDao;
 import pl.shonsu.hibernate.entity.Customer;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
@@ -16,7 +15,6 @@ public class CustomerService {
         this.customerDao = customerDao;
     }
 
-    @Transactional
     public Customer getCustomer(Long id) {
         return customerDao.getCustomer(id);
     }

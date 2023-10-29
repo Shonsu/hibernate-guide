@@ -1,10 +1,10 @@
-package pl.nullpointerexception.hibernate.controller;
+package pl.shonsu.hibernate.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
-import pl.nullpointerexception.hibernate.entity.Customer;
-import pl.nullpointerexception.hibernate.service.CustomerService;
+import pl.shonsu.hibernate.entity.Customer;
+import pl.shonsu.hibernate.service.CustomerService;
 
 import java.util.List;
 

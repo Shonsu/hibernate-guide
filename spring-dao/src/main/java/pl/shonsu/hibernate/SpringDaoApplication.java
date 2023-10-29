@@ -1,4 +1,4 @@
-package pl.nullpointerexception.hibernate;
+package pl.shonsu.hibernate;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

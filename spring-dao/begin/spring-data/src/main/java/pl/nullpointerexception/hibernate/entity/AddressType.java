@@ -1,4 +1,4 @@
-package pl.nullpointerexception.hibernate.entity;
+package pl.shonsu.hibernate.entity;
 
 public enum AddressType {
     BILLING, SHIPPING, INVOICE

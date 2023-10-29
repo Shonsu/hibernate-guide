@@ -1,7 +1,7 @@
-package pl.nullpointerexception.hibernate.dao;
+package pl.shonsu.hibernate.dao;
 
 import org.springframework.stereotype.Component;
-import pl.nullpointerexception.hibernate.entity.Customer;
+import pl.shonsu.hibernate.entity.Customer;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

@@ -1,29 +1,13 @@
-package pl.nullpointerexception.hibernate.entity;
+package pl.shonsu.hibernate.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.SortComparator;
-
-import jakarta.persistence.Cacheable;
+import jakarta.persistence.*;
 import jakarta.persistence.CascadeType;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cache;
+
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
 
 @Entity
 @Cacheable
@@ -40,10 +24,10 @@ public class Customer {
     @JsonIgnore
     @OneToMany(mappedBy = "customer", cascade = CascadeType.PERSIST)
     @Cache(region = "orders", usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    Set<Order> orders;
+    private Set<Order> orders;
 
     @ElementCollection(fetch = FetchType.LAZY)
-    private List<Address> address;
+    private Set<Address> address;
 
     @JsonIgnore
     @OneToOne(fetch = FetchType.LAZY, mappedBy = "customer", cascade = CascadeType.ALL, optional = false)
@@ -58,7 +42,8 @@ public class Customer {
     private SortedSet<Review> reviews = new TreeSet<>();
 
     @OneToMany(cascade = CascadeType.PERSIST)
-    private List<Note> notes = new ArrayList<>();
+    @JoinTable(name = "customer_note")
+    private Set<Note> notes = new HashSet<>();
 
     public static class SortById implements Comparator<Review> {
         @Override
@@ -130,11 +115,11 @@ public class Customer {
         this.orders = orders;
     }
 
-    public List<Address> getAddress() {
+    public Set<Address> getAddress() {
         return address;
     }
 
-    public void setAddress(List<Address> address) {
+    public void setAddress(Set<Address> address) {
         this.address = address;
     }
 
@@ -154,11 +139,11 @@ public class Customer {
         this.reviews = reviews;
     }
 
-    public List<Note> getNotes() {
+    public Set<Note> getNotes() {
         return notes;
     }
 
-    public void setNotes(List<Note> notes) {
+    public void setNotes(Set<Note> notes) {
         this.notes = notes;
     }
 

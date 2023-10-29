@@ -1,5 +1,6 @@
-package pl.nullpointerexception.hibernate.entity;
+package pl.shonsu.hibernate.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,18 +17,18 @@ import jakarta.persistence.NamedAttributeNode;
 import jakarta.persistence.NamedEntityGraph;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
+
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-@NamedEntityGraph(
-        name = "product",
+@NamedEntityGraph(name = "product",
         attributeNodes = {
                 @NamedAttributeNode("reviews"),
+                @NamedAttributeNode("category"),
                 @NamedAttributeNode("attributes")
-        }
-)
+        })
 @Entity
 public class Product {
     @Id
@@ -50,6 +51,7 @@ public class Product {
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(
+            name = "product_attribute",
             joinColumns = {@JoinColumn(name = "product_id")},
             inverseJoinColumns = {@JoinColumn(name = "attribute_id")}
     )

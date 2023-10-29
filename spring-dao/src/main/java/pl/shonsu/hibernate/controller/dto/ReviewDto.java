@@ -1,4 +1,4 @@
-package pl.nullpointerexception.hibernate.entity;
+package pl.shonsu.hibernate.controller.dto;
 
 public class ReviewDto {
     private Long id;
